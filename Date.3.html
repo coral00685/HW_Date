@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>日期</title>
+        
+        <!--D. 輸入一個日期，用程式計算出當天是當年度的第幾天?-->
+        
+    </head>
+    
+    <body>
+        <div>D. 輸入一個日期，用程式計算出當天是當年度的第幾天?<br></br></div>
+        
+        <div>
+            <label>日期：</label> <input type="date" id="date" name="date"> <br></br>
+           
+        </div>
+        
+            <input type="button" id="Button" name="Button" value="開始計算" onclick="Button_onclick()"><br></br>
+            <div id="result">計算結果：</div>
+        
+        <script>
+        
+             function Button_onclick() {  
+                
+                var a =  document.getElementById("date").value;
+                var b = new Date(a);
+                var c = b.getFullYear();
+                var d = b.getMonth()+1;     //getMonth()從0開始
+                var e = b.getDate();   
+               
+                var days = new Array();
+                var temp1 = 0;
+                var temp2 = 0;
+                
+                if( d == 1){
+            
+                    document.getElementById("result").innerHTML = "計算結果：" + e + "<br></br>";
+                    
+                }else{
+                    
+                    for(var i=1; i<d; i++){
+                        
+                        days[i] = new Date(c,i,0).getDate();  //當年度月份之天數
+                        temp1 += days[i];
+                        temp2 = temp1 + e;
+                        document.getElementById("result").innerHTML = "計算結果：" + temp2 + "<br></br>";
+                    }
+                }
+            
+             }
+        </script>
+        
+    </body>
+    
+</html>
